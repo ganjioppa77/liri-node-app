@@ -14,13 +14,15 @@ var command = process.argv[2];
 //movie or song
 var x = "";
 //attaches multiple word arguments
-for (var i=3; i<nodeArgv.length; i++){
-  if(i>3 && i<nodeArgv.length){
-    x = x + "+" + nodeArgv[i];
-  } else{
-    x = x + nodeArgv[i];
+
+
+  for (var i=3; i<nodeArgv.length; i++){
+    if(i>3 && i<nodeArgv.length){
+      x = x + "+" + nodeArgv[i];
+    } else{
+      x = x + nodeArgv[i];
+    }
   }
-}
 
 //switch case
 switch(command){
@@ -39,6 +41,7 @@ switch(command){
   
     case "movie-this":
       if(x){
+        console.log(x);
         omdbData(x)
       } else{
         omdbData("Mr. Nobody")
@@ -131,6 +134,7 @@ function spotifySong(song){
         fs.appendFile('log.txt', "Language: " + body.Language);
         fs.appendFile('log.txt', "Plot: " + body.Plot);
         fs.appendFile('log.txt', "Actors: " + body.Actors);
+        fs.appendFile('log.txt', "-----------------------");
   
       } else{
         console.log('Error occurred.')
